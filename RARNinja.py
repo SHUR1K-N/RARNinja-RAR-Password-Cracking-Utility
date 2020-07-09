@@ -71,7 +71,6 @@ def prompt():
             progressPrompt = input("\nSelect option number (Default = No): ") or "2"
 
             if (progressPrompt in ["1", "2"]):
-                print(progressPrompt)
                 return(dictionary, RAR, progressPrompt)
             else:
                 print("\nInvalid option number entered. Try again.\n")
