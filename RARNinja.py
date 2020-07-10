@@ -31,7 +31,7 @@ def progress(dictionary, RAR):
             try:
                 with rarfile.RarFile(RAR, 'r') as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print("Cracked and extracted! Password: " + password)
+                    print("\nCracked and extracted! Password: " + password)
                     found = True
                     break
             except:
@@ -49,7 +49,7 @@ def noProgress(dictionary, RAR):
             try:
                 with rarfile.RarFile(RAR, 'r') as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print(" Cracked and extracted! Password: " + password)
+                    print("\n\nCracked and extracted! Password: " + password)
                     found = True
                     break
             except:
