@@ -26,8 +26,8 @@ rarfile.UNRAR_TOOL = "UnRAR.exe"
 def progress(dictionary, RAR):
     found = False
     with open(dictionary, 'r') as file:
-        for line in file:
-            password = line.strip()
+        for line in enumerate(file):
+            password = str(line[1]).strip()
             try:
                 with rarfile.RarFile(RAR, 'r') as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
@@ -37,15 +37,15 @@ def progress(dictionary, RAR):
             except:
                 print("Incorrect password used: " + password)
                 continue
-    return(found)
+    return(found, line[0])
 
 
 def noProgress(dictionary, RAR):
     found = False
     print("\nWorking...", end='')
     with open(dictionary, 'r') as file:
-        for line in file:
-            password = line.strip()
+        for line in enumerate(file):
+            password = str(line[1]).strip()
             try:
                 with rarfile.RarFile(RAR, 'r') as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
@@ -54,7 +54,7 @@ def noProgress(dictionary, RAR):
                     break
             except:
                 continue
-    return(found)
+    return(found, line[0])
 
 
 def prompt():
@@ -86,15 +86,17 @@ dictionary, RAR, progressPrompt = prompt()
 
 if (progressPrompt == "1"):
     start = time.time()
-    found = progress(dictionary, RAR)
+    found, tries = progress(dictionary, RAR)
     completionTime = time.time() - start
 elif (progressPrompt == "2"):
     start = time.time()
-    found = noProgress(dictionary, RAR)
+    found, tries = noProgress(dictionary, RAR)
     completionTime = time.time() - start
 
+rate = (int(tries) // completionTime)
+
 if found:
-    print("\n\nThe task completed successfully in %f seconds." % (completionTime))
+    print("\n\nThe task completed successfully in %f seconds. (at ~%d tries/sec)" % (completionTime, rate))
     print("Press any key to exit.")
     input()
 else:
