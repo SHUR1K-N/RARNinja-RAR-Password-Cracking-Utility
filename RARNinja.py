@@ -60,8 +60,8 @@ def noProgress(dictionary, RAR):
 def prompt():
     while (correctPath is False):
         try:
-            RAR = input("Supply RAR file path here: ")
-            dictionary = input("Supply dictionary file path here: ")
+            RAR = input("Enter RAR file path here: ")
+            dictionary = input("Enter dictionary file path here: ")
 
             open(dictionary, 'r')
             open(RAR, 'r')
