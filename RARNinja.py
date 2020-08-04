@@ -3,10 +3,9 @@ from colorama import init
 from termcolor import colored
 
 correctPath = False
+rarfile.UNRAR_TOOL = "UnRAR.exe"
 
-init()
-
-print(colored('''
+BANNER1 = colored('''
                          ██▀███   ▄▄▄       ██▀███   ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
                         ▓██ ▒ ██▒▒████▄    ▓██ ▒ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
                         ▓██ ░▄█ ▒▒██  ▀█▄  ▓██ ░▄█ ▒▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
@@ -16,11 +15,14 @@ print(colored('''
                           ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
                           ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
                            ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░
-''', 'blue'))
-print(colored('''                                    RARNinja: The RAR Password Cracking Utility''', 'red'))
-print(colored('''                                   ---------------------------------------------''', 'blue'))
+''', 'blue')
+BANNER2 = colored('''                                    RARNinja: The RAR Password Cracking Utility''', 'red')
+BANNER3 = colored('''                                   ---------------------------------------------''', 'blue')
 
-rarfile.UNRAR_TOOL = "UnRAR.exe"
+
+def printBanner():
+    init()
+    print(BANNER1), print(BANNER2), print(BANNER3)
 
 
 def progress(dictionary, RAR):
@@ -82,24 +84,28 @@ def prompt():
 
 ####### Main #######
 
-dictionary, RAR, progressPrompt = prompt()
+if __name__ == "__main__":
 
-if (progressPrompt == "1"):
-    start = time.time()
-    found, tries = progress(dictionary, RAR)
-    completionTime = time.time() - start
-elif (progressPrompt == "2"):
-    start = time.time()
-    found, tries = noProgress(dictionary, RAR)
-    completionTime = time.time() - start
+    printBanner()
 
-rate = (int(tries) // completionTime)
+    dictionary, RAR, progressPrompt = prompt()
 
-if found:
-    print("\n\nThe task completed successfully in %f seconds. (at ~%d tries/sec)" % (completionTime, rate))
-    print("Press any key to exit.")
-    input()
-else:
-    print("\n\nAll lines in " + dictionary + " tried and exhausted, password not found. You may try another dictionary file.")
-    print("Press any key to exit.")
-    input()
+    if (progressPrompt == "1"):
+        start = time.time()
+        found, tries = progress(dictionary, RAR)
+        completionTime = time.time() - start
+    elif (progressPrompt == "2"):
+        start = time.time()
+        found, tries = noProgress(dictionary, RAR)
+        completionTime = time.time() - start
+
+    rate = (int(tries) // completionTime)
+
+    if found:
+        print("\n\nThe task completed successfully in %f seconds. (at ~%d tries/sec)" % (completionTime, rate))
+        print("Press any key to exit.")
+        input()
+    else:
+        print("\n\nAll lines in " + dictionary + " tried and exhausted, password not found. You may try another dictionary file.")
+        print("Press any key to exit.")
+        input()
