@@ -25,61 +25,38 @@ def printBanner():
     print(BANNER1), print(BANNER2), print(BANNER3)
 
 
-def progress(dictionary, RAR):
+def progress():
     found = False
-    with open(dictionary, 'r') as file:
+    with open(dictionary, "r") as file:
         for line in enumerate(file):
             password = str(line[1]).strip()
             try:
-                with rarfile.RarFile(RAR, 'r') as rar:
+                with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print("\nCracked and extracted! Password: " + password)
+                    print(f"\nCracked and extracted! Password: {password}")
                     found = True
                     break
             except:
-                print("Incorrect password used: " + password)
+                print(f"Incorrect password used: {password}")
                 continue
     return(found, line[0])
 
 
-def noProgress(dictionary, RAR):
+def noProgress():
     found = False
     print("\nWorking...", end='')
-    with open(dictionary, 'r') as file:
+    with open(dictionary, "r") as file:
         for line in enumerate(file):
             password = str(line[1]).strip()
             try:
-                with rarfile.RarFile(RAR, 'r') as rar:
+                with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print("\n\nCracked and extracted! Password: " + password)
+                    print(f"\n\nCracked and extracted! Password: {password}")
                     found = True
                     break
             except:
                 continue
     return(found, line[0])
-
-
-def prompt():
-    while (correctPath is False):
-        try:
-            RAR = input("Enter RAR file path here: ")
-            dictionary = input("Enter dictionary file path here: ")
-
-            open(dictionary, 'r')
-            open(RAR, 'r')
-
-            print("\nShow progress?")
-            print("1. Yes (slower)\n2. No (faster)")
-            progressPrompt = input("\nSelect option number (Default = No): ") or "2"
-
-            if (progressPrompt in ["1", "2"]):
-                return(dictionary, RAR, progressPrompt)
-            else:
-                print("\nInvalid option number entered. Try again.\n")
-                continue
-        except FileNotFoundError:
-            print("\nEither file does not exist or invalid path entered. Try again.\n")
-            continue
 
 
 ####### Main #######
@@ -88,24 +65,42 @@ if __name__ == "__main__":
 
     printBanner()
 
-    dictionary, RAR, progressPrompt = prompt()
+    while (correctPath is False):
+        try:
+            RAR = input("Enter RAR file path here: ")
+            dictionary = input("Enter dictionary file path here: ")
 
-    if (progressPrompt == "1"):
+            open(dictionary, "r")
+            open(RAR, "r")
+
+            print("\nShow progress?")
+            print("1. Yes (slower)\n2. No (faster)")
+            progressPrompt = int(input("\nSelect option number (Default = No): ") or 2)
+
+        except FileNotFoundError:
+            print("\nEither file does not exist or invalid path entered. Try again.\n")
+            continue
+
+    if (progressPrompt == 1):
         start = time.time()
         found, tries = progress(dictionary, RAR)
         completionTime = time.time() - start
-    elif (progressPrompt == "2"):
+    elif (progressPrompt == 2):
         start = time.time()
         found, tries = noProgress(dictionary, RAR)
         completionTime = time.time() - start
+    try:
+        rate = (int(tries) // completionTime)
 
-    rate = (int(tries) // completionTime)
-
-    if found:
-        print("\n\nThe task completed successfully in %f seconds. (at ~%d tries/sec)" % (completionTime, rate))
-        print("Press any key to exit.")
-        input()
-    else:
-        print("\n\nAll lines in " + dictionary + " tried and exhausted, password not found. You may try another dictionary file.")
+        if found:
+            print(f"\n\nThe task completed successfully in {completionTime} seconds. (at ~{rate} tries/sec)")
+            print("Press any key to exit.")
+            input()
+        else:
+            print(f"\n\nAll lines in {dictionary} tried and exhausted, password not found. You may try another dictionary file.")
+            print("Press any key to exit.")
+            input()
+    except ZeroDivisionError:
+        print("\n\nThe task completed successfully in zero seconds.")
         print("Press any key to exit.")
         input()
