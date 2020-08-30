@@ -80,14 +80,14 @@ if __name__ == "__main__":
         except FileNotFoundError:
             print("\nEither file does not exist or invalid path entered. Try again.\n")
             continue
-
+        break
     if (progressPrompt == 1):
         start = time.time()
-        found, tries = progress(dictionary, RAR)
+        found, tries = progress()
         completionTime = time.time() - start
     elif (progressPrompt == 2):
         start = time.time()
-        found, tries = noProgress(dictionary, RAR)
+        found, tries = noProgress()
         completionTime = time.time() - start
     try:
         rate = (int(tries) // completionTime)
