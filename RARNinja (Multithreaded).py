@@ -1,6 +1,5 @@
 import rarfile; import time
 import threading; import os
-import winsound
 
 rarfile.UNRAR_TOOL = "UnRAR.exe"
 
