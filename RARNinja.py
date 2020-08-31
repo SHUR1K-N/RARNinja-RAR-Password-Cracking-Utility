@@ -1,6 +1,7 @@
-import rarfile; import time
+import time; import os
 from colorama import init
 from termcolor import colored
+import rarfile
 
 correctPath = False
 rarfile.UNRAR_TOOL = "UnRAR.exe"
@@ -26,6 +27,7 @@ def printBanner():
 
 
 def progress():
+    clrscr()
     found = False
     with open(dictionary, "r") as file:
         for line in enumerate(file):
@@ -43,6 +45,7 @@ def progress():
 
 
 def noProgress():
+    clrscr()
     found = False
     print("\nWorking...", end='')
     with open(dictionary, "r") as file:
@@ -59,48 +62,65 @@ def noProgress():
     return(found, line[0])
 
 
+def clrscr():
+    if os.name == 'posix':
+        _ = os.system('clear')
+    else:
+        _ = os.system('cls')
+    printBanner()
+
+
 ####### Main #######
 
 if __name__ == "__main__":
 
     printBanner()
 
-    while (correctPath is False):
-        try:
-            RAR = input("Enter RAR file path here: ")
-            dictionary = input("Enter dictionary file path here: ")
+    while (True):
+        RAR = input("Enter RAR file path here: ")
+        dictionary = input("Enter dictionary file path here: ")
 
-            open(dictionary, "r")
-            open(RAR, "r")
-
-            print("\nShow progress?")
-            print("1. Yes (slower)\n2. No (faster)")
-            progressPrompt = int(input("\nSelect option number (Default = No): ") or 2)
-
-        except FileNotFoundError:
+        if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
+            break
+        else:
+            clrscr()
             print("\nEither file does not exist or invalid path entered. Try again.\n")
             continue
-        break
-    if (progressPrompt == 1):
-        start = time.time()
-        found, tries = progress()
-        completionTime = time.time() - start
-    elif (progressPrompt == 2):
-        start = time.time()
-        found, tries = noProgress()
-        completionTime = time.time() - start
-    try:
-        rate = (int(tries) // completionTime)
 
-        if found:
+    while (True):
+        print("\nShow progress?")
+        print("1. Yes (slower)\n2. No (faster)")
+        progressPrompt = input("\nSelect option number (Default = No): ") or "2"
+
+        if (progressPrompt == "1"):
+            start = time.time()
+            found, tries = progress()
+            completionTime = time.time() - start
+            break
+
+        elif (progressPrompt == "2"):
+            start = time.time()
+            found, tries = noProgress()
+            completionTime = time.time() - start
+            break
+
+        else:
+            clrscr()
+            print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
+            continue
+
+    if found:
+        try:
+            rate = (int(tries) // completionTime)
             print(f"\n\nThe task completed successfully in {completionTime} seconds. (at ~{rate} tries/sec)")
             print("Press any key to exit.")
             input()
-        else:
-            print(f"\n\nAll lines in {dictionary} tried and exhausted, password not found. You may try another dictionary file.")
+
+        except ZeroDivisionError:
+            print("\n\nThe task completed successfully in zero seconds.")
             print("Press any key to exit.")
             input()
-    except ZeroDivisionError:
-        print("\n\nThe task completed successfully in zero seconds.")
+    else:
+        print(f"\n\nAll lines in {dictionary} tried and exhausted, password not found. You may try another dictionary file.")
         print("Press any key to exit.")
         input()
