@@ -20,7 +20,6 @@ The high password-matching speed is owed to the smart implementation of creating
 The regular version of the program works flawlessly, but the much faster multithreading version is still an active work in progress.
 
 ## Dependencies to "pip install"
-
 - **colorama** (for colors)
 - **termcolor** (for colors)
 
