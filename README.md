@@ -11,9 +11,11 @@ A dictionary attack implementation I created, that takes the following as input:
 This project was created in Python, and can also be aided with my own super fast numbered dictionary generator [NumNinja](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator)  (700,000+ lines per second) for numeric attacks.
 
 ## Optimization
-The high password-matching speed is owed to the smart implementation of creating multiple chunks of the singular dictionary file and then working on all those chunks simulteanously (in different directions for better balance/efficiency) with the use of multithreading (the regular version of the program works flawlessly, but the much faster multithreading version is still an active work in progress).
+The high password-matching speed is owed to the smart implementation of creating multiple chunks of the dictionary file and then working on all those simplified chunks concurrently (with multithreading) in different directions for better balance, efficiency and performance.
 
 ![Single Threaded Vs. Multithreaded Performance](https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility/blob/master/Multithreading%20Presentation.png "Single Threaded Vs. Multithreaded Performance")
+
+The regular version of the program works flawlessly, but the much faster multithreading version is still an active work in progress.
 
 ## Dependencies to "pip install"
 
