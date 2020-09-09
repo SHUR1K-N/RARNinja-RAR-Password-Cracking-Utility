@@ -15,80 +15,80 @@ class AttackFunctions:
     def attackRAR1(passwordList, chunkOne):
         for password in passwordList[0:chunkOne]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR2(passwordList, chunkOne, chunkTwo):
         for password in passwordList[chunkTwo - 1:chunkOne - 1:-1]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR3(passwordList, chunkTwo, chunkThree):
         for password in passwordList[chunkTwo:chunkThree]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR4(passwordList, chunkThree, chunkFour):
         for password in passwordList[chunkFour - 1:chunkThree - 1:-1]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR5(passwordList, chunkFour, chunkFive):
         for password in passwordList[chunkFour:chunkFive]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR6(passwordList, chunkFive, chunkSix):
         for password in passwordList[chunkSix - 1:chunkFive - 1:-1]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR7(passwordList, chunkSix, chunkSeven):
         for password in passwordList[chunkSix:chunkSeven]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
     def attackRAR8(passwordList, chunkSeven):
         for password in passwordList[:chunkSeven - 1:-1]:
             try:
+                # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(pwd=password)
-                    print(f"\n\nPassword found! Password: {password}")
-                    print("You may now exit this window.")
+                    rar.extractall(path="./tmp/", pwd=password)
+                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
             except:
                 continue
 
