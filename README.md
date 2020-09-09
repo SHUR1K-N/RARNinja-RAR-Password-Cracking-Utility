@@ -13,7 +13,7 @@ This project was created in Python, and can also be aided with my own super fast
 ## Optimization
 The high password-matching speed is owed to the smart implementation of creating multiple chunks of the singular dictionary file and then working on all those chunks simulteanously (in different directions for better balance/efficiency) with the use of multithreading (the regular version of the program works flawlessly, but the much faster multithreading version is still an active work in progress).
 
-![Single Threaded Vs. Multithreaded Performance](https://ibb.co/mNcymmB "Single Threaded Vs. Multithreaded Performance")
+![Single Threaded Vs. Multithreaded Performance](https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility/blob/master/Multithreading%20Presentation.png "Single Threaded Vs. Multithreaded Performance")
 
 ## Dependencies to "pip install"
 
