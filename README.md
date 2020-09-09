@@ -1,7 +1,7 @@
 # RARNinja: The RAR Password Cracking Utility
 
 ## Description & Usage
-A dictionary attack implementation I created, that takes the following as input:
+A dictionary attack implementation, that takes the following as input:
 
 - The RAR file to be cracked
 - A dictionary file to be used for the cracking
