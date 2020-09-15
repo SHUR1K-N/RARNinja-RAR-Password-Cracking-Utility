@@ -15,8 +15,7 @@ BANNER1 = colored('''
                         ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
                           ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
                           ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
-                           ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░
-''', 'blue')
+                           ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░''', 'blue')
 BANNER2 = colored('''                                    RARNinja: The RAR Password Cracking Utility''', 'red')
 BANNER3 = colored('''                                   ---------------------------------------------''', 'blue')
 
@@ -70,14 +69,14 @@ def clrscr():
     printBanner()
 
 
-####### Main #######
+############### Main ###############
 
 if __name__ == "__main__":
 
     printBanner()
 
     while (True):
-        RAR = input("Enter RAR file path here: ")
+        RAR = input("\nEnter RAR file path here: ")
         dictionary = input("Enter dictionary file path here: ")
 
         if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
