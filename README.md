@@ -13,7 +13,7 @@ This project was created in Python, for experimental/observational purposes; and
 
 
 ## Optimization
-The high password-matching speed is owed to the smart implementation of creating multiple chunks of the dictionary file and then working on all those simplified chunks concurrently (with multithreading) in different directions for better balance, efficiency and performance.
+The high password-matching speed is owed to the smart implementation of creating multiple chunks of the dictionary file and then working on all those simplified chunks concurrently (multithreading) in different directions for better balance, efficiency and performance.
 
 ![Single Threaded Vs. Multithreaded Performance](https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility/blob/master/Multithreading%20Presentation.png "Single Threaded Vs. Multithreaded Performance")
 
