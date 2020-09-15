@@ -34,11 +34,11 @@ def progress():
             try:
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print(f"\nCracked and extracted! Password: {password}")
+                    print(colored(f"\nCracked and extracted! Password: {password}", "green"))
                     found = True
                     break
             except:
-                print(f"Incorrect password used: {password}")
+                print(f"Incorrect password tried: {password}")
                 continue
     return(found, line[0])
 
@@ -53,7 +53,7 @@ def noProgress():
             try:
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print(f"\n\nCracked and extracted! Password: {password}")
+                    print(colored(f"\nCracked and extracted! Password: {password}", "green"))
                     found = True
                     break
             except:

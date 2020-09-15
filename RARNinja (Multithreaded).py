@@ -38,7 +38,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -48,7 +50,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -58,7 +62,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -68,7 +74,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -78,7 +86,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -88,7 +98,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -98,7 +110,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
@@ -108,7 +122,9 @@ class AttackFunctions:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./tmp/", pwd=password)
-                print(f"\n\nPassword found! Password: {password}\nYou may now exit this window.")
+                clrscr()
+                print(colored(f"\nPassword found! Password: {password}", "green"))
+                print("\nYou may now exit this window.")
             except:
                 continue
 
