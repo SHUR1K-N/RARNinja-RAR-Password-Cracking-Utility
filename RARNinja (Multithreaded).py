@@ -1,7 +1,27 @@
 import rarfile; import time
 import threading; import os
+from colorama import init
+from termcolor import colored
 
 rarfile.UNRAR_TOOL = "UnRAR.exe"
+
+BANNER1 = colored('''
+                         ██▀███   ▄▄▄       ██▀███   ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
+                        ▓██ ▒ ██▒▒████▄    ▓██ ▒ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
+                        ▓██ ░▄█ ▒▒██  ▀█▄  ▓██ ░▄█ ▒▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
+                        ▒██▀▀█▄  ░██▄▄▄▄██ ▒██▀▀█▄  ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
+                        ░██▓ ▒██▒ ▓█   ▓██▒░██▓ ▒██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
+                        ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
+                          ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
+                          ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
+                           ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░''', 'blue')
+BANNER2 = colored('''                                    RARNinja: The RAR Password Cracking Utility''', 'red')
+BANNER3 = colored('''                                   ---------------------------------------------''', 'blue')
+
+
+def printBanner():
+    init()
+    print(BANNER1), print(BANNER2), print(BANNER3)
 
 
 def generator():
@@ -98,14 +118,25 @@ def clrscr():
         _ = os.system('clear')
     else:
         _ = os.system('cls')
+    printBanner()
 
 
-####### Main #######
+############### Main ###############
 
 if __name__ == "__main__":
 
-    RAR = input("\nEnter RAR file path here: ")
-    dictionary = input("Enter dictionary file path here: ")
+    printBanner()
+
+    while (True):
+        RAR = input("\nEnter RAR file path here: ")
+        dictionary = input("Enter dictionary file path here: ")
+
+        if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
+            break
+        else:
+            clrscr()
+            print("\nEither file does not exist or invalid path entered. Try again.\n")
+            continue
 
     generatedList = generator()
     passwordList = list(generatedList)
