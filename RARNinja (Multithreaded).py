@@ -3,6 +3,8 @@ import threading; import os
 from colorama import init
 from termcolor import colored
 
+init() # Initilizing colors
+
 rarfile.UNRAR_TOOL = "UnRAR.exe"
 
 BANNER1 = colored('''
@@ -20,7 +22,6 @@ BANNER3 = colored('''                                   ------------------------
 
 
 def printBanner():
-    init()
     print(BANNER1), print(BANNER2), print(BANNER3)
 
 
@@ -143,49 +144,56 @@ if __name__ == "__main__":
 
     printBanner()
 
-    while (True):
-        RAR = input("\nEnter RAR file path here: ")
-        dictionary = input("Enter dictionary file path here: ")
+    try:
 
-        if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
-            break
-        else:
-            clrscr()
-            print("\nEither file does not exist or invalid path entered. Try again.\n")
-            continue
+        while (True):
+            RAR = input("\nEnter RAR file path here: ")
+            dictionary = input("Enter dictionary file path here: ")
 
-    generatedList = generator()
-    passwordList = list(generatedList)
+            if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
+                break
+            else:
+                clrscr()
+                print("\nEither file does not exist or invalid path entered. Try again.\n")
+                continue
 
-    chunkOne = len(passwordList) // 8
-    chunkTwo = chunkOne * 2
-    chunkThree = chunkOne * 3
-    chunkFour = chunkOne * 4
-    chunkFive = chunkOne * 5
-    chunkSix = chunkOne * 6
-    chunkSeven = chunkOne * 7
+        generatedList = generator()
+        passwordList = list(generatedList)
 
-    threadForwardOne = threading.Thread(target=AttackFunctions.attackRAR1, args=[passwordList, chunkOne])
-    threadReverseOne = threading.Thread(target=AttackFunctions.attackRAR2, args=[passwordList, chunkOne, chunkTwo])
+        chunkOne = len(passwordList) // 8
+        chunkTwo = chunkOne * 2
+        chunkThree = chunkOne * 3
+        chunkFour = chunkOne * 4
+        chunkFive = chunkOne * 5
+        chunkSix = chunkOne * 6
+        chunkSeven = chunkOne * 7
 
-    threadForwardTwo = threading.Thread(target=AttackFunctions.attackRAR3, args=[passwordList, chunkTwo, chunkThree])
-    threadReverseTwo = threading.Thread(target=AttackFunctions.attackRAR4, args=[passwordList, chunkThree, chunkFour])
+        threadForwardOne = threading.Thread(target=AttackFunctions.attackRAR1, args=[passwordList, chunkOne])
+        threadReverseOne = threading.Thread(target=AttackFunctions.attackRAR2, args=[passwordList, chunkOne, chunkTwo])
 
-    threadForwardThree = threading.Thread(target=AttackFunctions.attackRAR5, args=[passwordList, chunkFour, chunkFive])
-    threadReverseThree = threading.Thread(target=AttackFunctions.attackRAR6, args=[passwordList, chunkFive, chunkSix])
+        threadForwardTwo = threading.Thread(target=AttackFunctions.attackRAR3, args=[passwordList, chunkTwo, chunkThree])
+        threadReverseTwo = threading.Thread(target=AttackFunctions.attackRAR4, args=[passwordList, chunkThree, chunkFour])
 
-    threadForwardFour = threading.Thread(target=AttackFunctions.attackRAR7, args=[passwordList, chunkSix, chunkSeven])
-    threadReverseFour = threading.Thread(target=AttackFunctions.attackRAR8, args=[passwordList, chunkSeven])
+        threadForwardThree = threading.Thread(target=AttackFunctions.attackRAR5, args=[passwordList, chunkFour, chunkFive])
+        threadReverseThree = threading.Thread(target=AttackFunctions.attackRAR6, args=[passwordList, chunkFive, chunkSix])
 
-    clrscr()
-    print("\nWorking...", end="")
+        threadForwardFour = threading.Thread(target=AttackFunctions.attackRAR7, args=[passwordList, chunkSix, chunkSeven])
+        threadReverseFour = threading.Thread(target=AttackFunctions.attackRAR8, args=[passwordList, chunkSeven])
 
-    threadForwardOne.start(), threadReverseOne.start()
-    threadForwardTwo.start(), threadReverseTwo.start()
-    threadForwardThree.start(), threadReverseThree.start()
-    threadForwardFour.start(), threadReverseFour.start()
+        clrscr()
+        print("\nWorking...", end="")
 
-    threadForwardOne.join(), threadReverseOne.join()
-    threadForwardTwo.join(), threadReverseTwo.join()
-    threadForwardThree.join(), threadReverseThree.join()
-    threadForwardFour.join(), threadReverseFour.join()
+        threadForwardOne.start(), threadReverseOne.start()
+        threadForwardTwo.start(), threadReverseTwo.start()
+        threadForwardThree.start(), threadReverseThree.start()
+        threadForwardFour.start(), threadReverseFour.start()
+
+        threadForwardOne.join(), threadReverseOne.join()
+        threadForwardTwo.join(), threadReverseTwo.join()
+        threadForwardThree.join(), threadReverseThree.join()
+        threadForwardFour.join(), threadReverseFour.join()
+    except KeyboardInterrupt:
+        clrscr()
+        print("\nCTRL ^C\n\nThrew a wrench in the works.")
+        print("Press Enter to exit.")
+        input()
