@@ -8,7 +8,7 @@ A dictionary attack implementation, that takes the following as input:
 
 ...and then tries every line in the supplied dictionary file as the password input for the supplied RAR file, until either the correct password is found or the dictionary is exhausted upon the correct password not being found. Upon the discovery of the correct password, the supplied RAR is automatically unlocked and extracted into the "Extracted" folder in the current working directory; so this tool can easily be left to execute in the background as well. 
 
-This project was created in Python, for experimental/observational purposes; and can also be aided with my own super fast numbered dictionary generator [NumNinja](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator)  (700,000+ lines per second) for numeric attacks.
+This project was created in Python, for experimental/observational purposes; and can also be aided with my own super fast numbered dictionary generator [**NumNinja**](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator)  (700,000+ lines per second) for numeric attacks.
 
 
 
@@ -19,7 +19,7 @@ The high password-matching speed is owed to the smart implementation of creating
 
 The regular version of the program works flawlessly, but the much faster multithreading version is still an active work in progress.
 
-## Dependencies to "pip install"
+## Dependencies to PIP-Install
 - **colorama** (for colors)
 - **termcolor** (for colors)
 
