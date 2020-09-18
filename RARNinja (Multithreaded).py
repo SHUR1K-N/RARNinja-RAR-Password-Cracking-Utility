@@ -38,10 +38,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -50,10 +51,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -62,10 +64,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -74,10 +77,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -86,10 +90,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -98,10 +103,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -110,10 +116,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
@@ -122,10 +129,11 @@ class AttackFunctions:
             try:
                 # print(password)
                 with rarfile.RarFile(RAR, "r") as rar:
-                    rar.extractall(path="./tmp/", pwd=password)
+                    rar.extractall(path="./Extracted/", pwd=password)
                 clrscr()
                 print(colored(f"\nPassword found! Password: {password}", "green"))
                 print("\nYou may now exit this window.")
+                input()
             except:
                 continue
 
