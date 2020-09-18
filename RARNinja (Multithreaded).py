@@ -1,9 +1,9 @@
 import rarfile; import time
 import threading; import os
-from colorama import init
+import colorama
 from termcolor import colored
 
-init() # Initilizing colors
+colorama.init()
 
 rarfile.UNRAR_TOOL = "UnRAR.exe"
 
