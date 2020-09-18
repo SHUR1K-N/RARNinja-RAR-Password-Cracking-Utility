@@ -14,7 +14,7 @@ A dictionary attack implementation, that takes the following as input:
 </div> 
 
 
-This project was created in Python, for experimental/observational purposes; and can also be aided with my own super fast numbered dictionary generator [**NumNinja**](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator)  (700,000+ lines per second) for numeric attacks.
+This project was created in Python, for experimental/observational purposes; and can also be aided with my own super fast numbered dictionary generator [**NumNinja**](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator)  (2M+ lines per second) for numeric attacks.
 
 ## Optimization
 The high password-matching speed is owed to the smart implementation of creating multiple chunks of the dictionary file and then working on all those simplified chunks concurrently (multithreading) in different directions for better balance, efficiency and performance.
