@@ -1,7 +1,7 @@
-import time; import os
-import colorama
-from termcolor import colored
 import rarfile
+import time; import os
+from termcolor import colored
+import colorama
 
 colorama.init()
 
