@@ -1,4 +1,4 @@
-# RARNinja: The RAR Password Cracking Utility
+# RARNinja: RAR Password Cracking Utility
 
 ## Description & Usage
 A dictionary attack implementation, that takes the following as input:
