@@ -9,29 +9,30 @@ correctPath = False
 rarfile.UNRAR_TOOL = "UnRAR.exe"
 
 BANNER1 = colored('''
-                         ██▀███   ▄▄▄       ██▀███   ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
-                        ▓██ ▒ ██▒▒████▄    ▓██ ▒ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
-                        ▓██ ░▄█ ▒▒██  ▀█▄  ▓██ ░▄█ ▒▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
-                        ▒██▀▀█▄  ░██▄▄▄▄██ ▒██▀▀█▄  ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
-                        ░██▓ ▒██▒ ▓█   ▓██▒░██▓ ▒██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
-                        ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
-                          ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
-                          ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
-                           ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░''', 'blue')
-BANNER2 = colored('''                                    RARNinja: The RAR Password Cracking Utility''', 'red')
-BANNER3 = colored('''                                   ---------------------------------------------''', 'blue')
+   ██▀███   ▄▄▄       ██▀███   ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
+  ▓██ ▒ ██▒▒████▄    ▓██ ▒ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
+  ▓██ ░▄█ ▒▒██  ▀█▄  ▓██ ░▄█ ▒▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
+  ▒██▀▀█▄  ░██▄▄▄▄██ ▒██▀▀█▄  ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
+  ░██▓ ▒██▒ ▓█   ▓██▒░██▓ ▒██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
+  ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
+    ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
+    ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
+     ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░''', 'blue')
+BANNER2 = colored('''             -------------------------------------------------''', 'blue')
+BANNER3 = colored('''             || RARNinja: The RAR Password Cracking Utility ||''', 'red')
+BANNER4 = colored('''             -------------------------------------------------''', 'blue')
 
 
 def printBanner():
-    print(BANNER1), print(BANNER2), print(BANNER3)
+    print(BANNER1), print(BANNER2), print(BANNER3), print(BANNER4)
 
 
 def progress():
     clrscr()
     found = False
     with open(dictionary, "r") as file:
-        for line in enumerate(file):
-            password = str(line[1]).strip()
+        for tries, line in enumerate(file):
+            password = str(line).strip()
             try:
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
@@ -41,7 +42,7 @@ def progress():
             except:
                 print(f"Incorrect password tried: {password}")
                 continue
-    return(found, line[0])
+    return(found, tries)
 
 
 def noProgress():
@@ -49,17 +50,17 @@ def noProgress():
     found = False
     print("\nWorking...", end='')
     with open(dictionary, "r") as file:
-        for line in enumerate(file):
-            password = str(line[1]).strip()
+        for tries, line in enumerate(file, start=1):
+            password = str(line).strip()
             try:
                 with rarfile.RarFile(RAR, "r") as rar:
                     rar.extractall(path="./Extracted/", pwd=password)
-                    print(colored(f"\nCracked and extracted! Password: {password}", "green"))
+                    print(colored(f" Cracked and extracted! Password: {password}", "green"))
                     found = True
                     break
             except:
                 continue
-    return(found, line[0])
+    return(found, tries)
 
 
 def clrscr():
@@ -123,8 +124,8 @@ if __name__ == "__main__":
                 print("Press any key to exit.")
                 input()
         else:
-            print(f"\n\nAll lines in {dictionary} tried and exhausted, password not found. You may try another dictionary file.")
-            print("Press any key to exit.")
+            print(colored(f" All lines in {dictionary} tried and exhausted (password not found), You may try another dictionary file.", "red"))
+            print("\nPress any key to exit.")
             input()
     except KeyboardInterrupt:
         clrscr()
