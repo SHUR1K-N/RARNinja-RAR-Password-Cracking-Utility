@@ -8,27 +8,28 @@ colorama.init()
 rarfile.UNRAR_TOOL = "UnRAR.exe"
 
 BANNER1 = colored('''
-                         ██▀███   ▄▄▄       ██▀███   ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
-                        ▓██ ▒ ██▒▒████▄    ▓██ ▒ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
-                        ▓██ ░▄█ ▒▒██  ▀█▄  ▓██ ░▄█ ▒▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
-                        ▒██▀▀█▄  ░██▄▄▄▄██ ▒██▀▀█▄  ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
-                        ░██▓ ▒██▒ ▓█   ▓██▒░██▓ ▒██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
-                        ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
-                          ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
-                          ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
-                           ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░''', 'blue')
-BANNER2 = colored('''                                    RARNinja: The RAR Password Cracking Utility''', 'red')
-BANNER3 = colored('''                                   ---------------------------------------------''', 'blue')
+   ██▀███   ▄▄▄       ██▀███   ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
+  ▓██ ▒ ██▒▒████▄    ▓██ ▒ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
+  ▓██ ░▄█ ▒▒██  ▀█▄  ▓██ ░▄█ ▒▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
+  ▒██▀▀█▄  ░██▄▄▄▄██ ▒██▀▀█▄  ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
+  ░██▓ ▒██▒ ▓█   ▓██▒░██▓ ▒██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
+  ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
+    ░▒ ░ ▒░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
+    ░░   ░   ░   ▒     ░░   ░    ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
+     ░           ░  ░   ░              ░  ░           ░  ░   ░        ░  ░''', 'blue')
+BANNER2 = colored('''             -------------------------------------------------''', 'blue')
+BANNER3 = colored('''             || RARNinja: The RAR Password Cracking Utility ||''', 'red')
+BANNER4 = colored('''             -------------------------------------------------''', 'blue')
 
 
 def printBanner():
-    print(BANNER1), print(BANNER2), print(BANNER3)
+    print(BANNER1), print(BANNER2), print(BANNER3), print(BANNER4)
 
 
 def generator():
     with open(dictionary, "r") as file:
-        for line in enumerate(file):
-            yield line[1].strip()
+        for line in file:
+            yield line.strip()
 
 
 class AttackFunctions:
@@ -191,15 +192,15 @@ if __name__ == "__main__":
         clrscr()
         print("\nWorking...", end="")
 
-        threadForwardOne.start(), threadReverseOne.start()
-        threadForwardTwo.start(), threadReverseTwo.start()
-        threadForwardThree.start(), threadReverseThree.start()
-        threadForwardFour.start(), threadReverseFour.start()
+        threadPool = [threadForwardOne, threadReverseOne, threadForwardTwo, threadReverseTwo,
+                      threadForwardThree, threadReverseThree, threadForwardFour, threadReverseFour]
 
-        threadForwardOne.join(), threadReverseOne.join()
-        threadForwardTwo.join(), threadReverseTwo.join()
-        threadForwardThree.join(), threadReverseThree.join()
-        threadForwardFour.join(), threadReverseFour.join()
+        for thread in threadPool:
+            thread.start()
+
+        for thread in threadPool:
+            thread.join()
+
     except KeyboardInterrupt:
         clrscr()
         print("\nCTRL ^C\n\nThrew a wrench in the works.")
