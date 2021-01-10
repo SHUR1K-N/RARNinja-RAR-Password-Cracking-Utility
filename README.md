@@ -27,4 +27,4 @@ The high password-matching speed is owed to the approach of "chunkifying" the di
 
 ------------
 
-My website: http://bit.do/SHUR1KN
+My website: https://TheComputerNoob.com
