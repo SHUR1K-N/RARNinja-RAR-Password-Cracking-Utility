@@ -1,3 +1,3 @@
-rarfile	# for working with RAR files
+rarfile		# for working with RAR files
 colorama 	# for colors
 termcolor 	# for colors
